@@ -1,0 +1,245 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>기념일 목록</title>
+    <style>
+        body {
+            font-family: 'Gmarket Sans', 'Noto Sans KR', Arial, sans-serif;
+            background: linear-gradient(135deg, #FFF5E1 0%, #FFD6EC 100%);
+            margin: 0;
+            min-height: 100vh;
+        }
+        .header-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 24px 28px 0 28px;
+        }
+        .btn.new-link {
+            width: auto;
+            min-width: 120px;
+            padding: 10px 24px 10px 18px;
+            font-size: 1.02rem;
+            border-radius: 9px;
+            background: linear-gradient(90deg, #ffd6ec 0%, #ffb347 100%);
+            color: #ff5e62;
+            font-weight: 700;
+            box-shadow: none;
+            text-align: right;
+            margin-left: auto;
+            margin-right: 0;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.22s, color 0.13s, transform 0.1s;
+        }
+        .btn.new-link:hover {
+            background: linear-gradient(90deg, #ffb347 0%, #ffd6ec 100%);
+            color: #fff;
+            transform: scale(1.04);
+            text-decoration: underline;
+        }
+        .party-header {
+            text-align: center;
+            padding-top: 8px;
+            margin-bottom: 8px;
+        }
+        .party-header .emoji {
+            font-size: 42px;
+            margin-bottom: 0;
+            animation: pop 1s infinite alternate;
+        }
+        @keyframes pop {
+            0% { transform: scale(1);}
+            100% { transform: scale(1.12) rotate(-4deg);}
+        }
+        .party-header h2 {
+            font-family: 'Gmarket Sans', cursive;
+            color: #ff5e62;
+            font-size: 2.1rem;
+            margin: 0 0 6px 0;
+            letter-spacing: 1px;
+            text-shadow: 1px 3px 12px #ffdae6;
+        }
+        .flags {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .flag {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            border-radius: 40% 60% 65% 35% / 60% 40% 60% 40%;
+            background: linear-gradient(120deg, #ffb347 0%, #ffcc33 100%);
+            margin: 0 3px;
+            box-shadow: 0 3px 7px rgba(255,183,197,0.23);
+            transform: rotate(-8deg);
+        }
+        .flag:nth-child(2) {
+            background: linear-gradient(120deg, #7ee8fa 0%, #eec0c6 100%);
+            transform: rotate(8deg);
+        }
+        .flag:nth-child(3) {
+            background: linear-gradient(120deg, #ff6e7f 0%, #bfe9ff 100%);
+            transform: rotate(-5deg);
+        }
+        .flag:nth-child(4) {
+            background: linear-gradient(120deg, #d9afd9 0%, #97d9e1 100%);
+            transform: rotate(6deg);
+        }
+        .container {
+            max-width: 430px;
+            margin: 0 auto 36px auto;
+            background: #fff;
+            border-radius: 22px;
+            padding: 38px 28px 18px 28px;
+            box-shadow: 0 4px 30px 4px #ffd6ec8e, 0 1.5px 6px 0 #eec0c646;
+        }
+        .anniv-list {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .anniv-list th, .anniv-list td {
+            padding: 13px 10px;
+            text-align: left;
+            font-size: 1.07rem;
+        }
+        .anniv-list th {
+            background: #fff0f8;
+            color: #ff5e62;
+            font-weight: 800;
+            font-size: 1.11rem;
+            border-bottom: 2px solid #ffd6ec;
+        }
+        .anniv-list tr {
+            border-bottom: 1px solid #ffe3e3;
+            transition: background 0.13s;
+        }
+        .anniv-list tr:hover {
+            background: #fff6fb;
+        }
+        .anniv-list td.title-col a {
+            color: #ff5e62;
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 0.13s;
+        }
+        .anniv-list td.title-col a:hover {
+            color: #ffa263;
+            text-decoration: underline;
+        }
+        .anniv-list td {
+            color: #333;
+        }
+        .btn.mail-btn {
+            background: linear-gradient(90deg, #ff9966 0%, #ff5e62 100%);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.01rem;
+            border: none;
+            border-radius: 7px;
+            padding: 8px 17px;
+            cursor: pointer;
+            transition: background 0.18s, transform 0.11s;
+            box-shadow: 0 2px 7px #ffd6ec7d;
+        }
+        .btn.mail-btn:hover {
+            background: linear-gradient(90deg, #fd5a61 0%, #ffb347 100%);
+            color: #fff;
+            transform: scale(1.03);
+        }
+        .message {
+            text-align: center;
+            margin: 14px 0 8px 0;
+            color: #ff5e62;
+            font-size: 1.12rem;
+            font-weight: bold;
+        }
+        .btn.action {
+            padding: 7px 18px;
+            font-size: 0.98rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-family: 'Gmarket Sans', Arial, sans-serif;
+            border: none;
+            text-decoration: none;
+            cursor: pointer;
+            margin-right: 5px;
+            transition: background 0.18s, color 0.13s, transform 0.08s;
+            display: inline-block;
+            box-shadow: 0 1px 5px #ffd6ec46;
+            text-align: center;
+        }
+        .btn.edit {
+            background: linear-gradient(90deg, #eec0c6 0%, #f9e6b1 100%);
+            color: #b266e3;
+        }
+        .btn.delete {
+            background: linear-gradient(90deg, #ffbaba 0%, #ffd6ec 100%);
+            color: #ff5e62;
+        }
+        .btn.action:hover {
+            filter: brightness(0.97);
+            transform: translateY(-1px) scale(1.04);
+        }
+    </style>
+</head>
+
+<body>
+<div class="header-bar">
+    <a class="btn new-link" href="/PF/new">+ 기념일 등록</a>
+</div>
+<div class="party-header">
+    <div class="emoji">🎉✨🎈</div>
+    <h2>기념일 목록</h2>
+</div>
+<div class="flags">
+    <div class="flag"></div>
+    <div class="flag"></div>
+    <div class="flag"></div>
+    <div class="flag"></div>
+</div>
+<div class="container">
+    {{#message}}
+        <div class="message">{{message}}</div>
+    {{/message}}
+    <form method="post" action="/anniversaries/sendEmailBatch">
+        <table class="anniv-list">
+            <thead>
+            <tr>
+                <th style="width:40px;"></th>
+                <th>제목</th>
+                <th>날짜</th>
+                <th>D-day</th>
+                <th>메모</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#anniversaries}}
+                <tr>
+                    <td><input type="checkbox" name="ids" value="{{id}}"></td>
+                    <td class="title-col">
+                        <a href="/anniversaries/{{id}}">{{title}}</a>
+                    </td>
+                    <td>{{date}}</td>
+                    <td>{{dayString}}</td>
+                    <td>{{memo}}</td>
+                    <td>
+                        <a href="/anniversaries/{{id}}/edit" class="btn action edit">수정</a>
+                        <a href="/anniversaries/{{id}}/delete" class="btn action delete" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a>
+                    </td>
+                </tr>
+            {{/anniversaries}}
+            </tbody>
+        </table>
+        <div style="display:flex;justify-content:flex-end;margin-top:18px;">
+            <input type="email" name="email" placeholder="이메일 입력" required style="margin-right:12px;padding:9px 11px;border-radius:7px;border:1.6px solid #ffd6ec;outline:none;font-size:15px;min-width:140px;">
+            <button type="submit" class="btn mail-btn">선택 메일 발송</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>기념일 수정</title>
+    <style>
+        body {
+           font-family: 'Gmarket Sans', 'Noto Sans KR', Arial, sans-serif;
+           background: linear-gradient(135deg, #FFF5E1 0%, #FFD6EC 100%);
+           margin: 0;
+           min-height: 100vh;
+       }
+       .header-bar {
+           display: flex;
+           justify-content: flex-end;
+           align-items: center;
+           max-width: 480px;
+           margin: 0 auto;
+           padding: 24px 28px 0 28px;
+       }
+       .btn.list-link {
+           width: auto;
+           min-width: 120px;
+           padding: 10px 26px 10px 20px;
+           font-size: 1.02rem;
+           border-radius: 9px;
+           background: linear-gradient(90deg, #ffd6ec 0%, #ffb347 100%);
+           color: #ff5e62;
+           font-weight: 700;
+           box-shadow: none;
+           text-align: right;
+           margin-left: auto;
+           margin-right: 0;
+           text-decoration: none;
+           display: inline-block;
+           transition: background 0.22s, color 0.13s, transform 0.1s;
+       }
+       .btn.list-link:hover {
+           background: linear-gradient(90deg, #ffb347 0%, #ffd6ec 100%);
+           color: #fff;
+           transform: scale(1.04);
+           text-decoration: underline;
+       }
+       .party-header {
+           text-align: center;
+           padding-top: 8px;
+           margin-bottom: 8px;
+       }
+       .party-header .emoji {
+           font-size: 42px;
+           margin-bottom: 0;
+           animation: pop 1s infinite alternate;
+       }
+       @keyframes pop {
+           0% { transform: scale(1);}
+           100% { transform: scale(1.12) rotate(-4deg);}
+       }
+       .party-header h2 {
+           font-family: 'Gmarket Sans', cursive;
+           color: #ff5e62;
+           font-size: 2.1rem;
+           margin: 0 0 6px 0;
+           letter-spacing: 1px;
+           text-shadow: 1px 3px 12px #ffdae6;
+       }
+       .flags {
+           text-align: center;
+           margin-bottom: 20px;
+       }
+       .flag {
+           display: inline-block;
+           width: 26px;
+           height: 26px;
+           border-radius: 40% 60% 65% 35% / 60% 40% 60% 40%;
+           background: linear-gradient(120deg, #ffb347 0%, #ffcc33 100%);
+           margin: 0 3px;
+           box-shadow: 0 3px 7px rgba(255,183,197,0.23);
+           transform: rotate(-8deg);
+       }
+       .flag:nth-child(2) {
+           background: linear-gradient(120deg, #7ee8fa 0%, #eec0c6 100%);
+           transform: rotate(8deg);
+       }
+       .flag:nth-child(3) {
+           background: linear-gradient(120deg, #ff6e7f 0%, #bfe9ff 100%);
+           transform: rotate(-5deg);
+       }
+       .flag:nth-child(4) {
+           background: linear-gradient(120deg, #d9afd9 0%, #97d9e1 100%);
+           transform: rotate(6deg);
+       }
+       .container {
+           max-width: 400px;
+           background: #fff;
+           margin: 0 auto 0 auto;
+           margin-bottom: 36px;
+           padding: 38px 28px 26px 28px;
+           border-radius: 22px;
+           box-shadow: 0 4px 30px 4px #ffd6ec8e, 0 1.5px 6px 0 #eec0c646;
+       }
+       .form-group {
+           margin-bottom: 19px;
+       }
+       label {
+           font-size: 1.08rem;
+           font-weight: bold;
+           color: #ff5e62;
+           margin-bottom: 7px;
+           display: block;
+       }
+       input[type="text"], input[type="date"], textarea {
+           width: 100%;
+           font-size: 16px;
+           padding: 12px 11px;
+           border: 2px solid #ffb6b9;
+           border-radius: 8px;
+           background: #fff6fb;
+           margin-bottom: 3px;
+           transition: border-color 0.16s;
+           box-sizing: border-box;
+       }
+       input[type="text"]:focus, input[type="date"]:focus, textarea:focus {
+           border-color: #ff5e62;
+           outline: none;
+           background: #fff0f8;
+       }
+       textarea {
+           min-height: 72px;
+           max-height: 120px;
+           resize: none;
+           font-family: inherit;
+       }
+       .btn {
+           width: 100%;
+           padding: 14px;
+           background: linear-gradient(90deg, #ff9966 0%, #ff5e62 100%);
+           color: #fff;
+           border: none;
+           border-radius: 9px;
+           font-size: 1.15rem;
+           font-family: 'Gmarket Sans', Arial, sans-serif;
+           font-weight: 700;
+           cursor: pointer;
+           letter-spacing: 0.2px;
+           margin-top: 8px;
+           box-shadow: 0 3px 17px 0 #ffd6ec9c;
+           transition: background 0.2s, transform 0.1s;
+       }
+       .btn:hover {
+           background: linear-gradient(90deg, #fd5a61 0%, #ffb347 100%);
+           transform: translateY(-1px) scale(1.02);
+       }
+       .tip {
+           text-align: right;
+           font-size: 12.5px;
+           color: #bdbdbd;
+           margin-top: -7px;
+           margin-bottom: 9px;
+       }n-bottom: 9px;
+       }
+    </style>
+</head>
+<body>
+<div class="header-bar">
+    <a class="btn list-link" href="/anniversaries">← 목록보기</a>
+</div>
+<div class="party-header">
+    <div class="emoji">🎉✨🎈</div>
+    <h2>기념일 수정하기</h2>
+</div>
+<div class="flags">
+    <div class="flag"></div>
+    <div class="flag"></div>
+    <div class="flag"></div>
+    <div class="flag"></div>
+</div>
+<div class="container">
+    <form action="/anniversaries/update" method="post">
+        <input type="hidden" name="id" value="{{anniversary.id}}">
+        <label for="title">기념일 제목</label>
+        <input type="text" id="title" name="title" value="{{anniversary.title}}" required>
+
+        <label for="date">기념일 날짜</label>
+        <input type="date" id="date" name="date" value="{{anniversary.date}}" required>
+
+        <label for="memo">메모 (선택)</label>
+        <textarea id="memo" name="memo" rows="4">{{anniversary.memo}}</textarea>
+
+        <button type="submit" class="btn">수정</button>
+    </form>
+</div>
+</body>
+</html>
